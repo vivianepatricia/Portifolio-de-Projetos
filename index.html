@@ -30,9 +30,13 @@
   <!-- Ajustes -->
   <style>
     /* Evitar que o header cubra a âncora */
-    #resume, #skills { scroll-margin-top: 90px; }
-    /* Título do currículo centralizado; conteúdos seguem à esquerda via grid */
-    .resume .section-title { text-align: center; }
+    #resume { scroll-margin-top: 90px; }
+
+    /* Barras dinâmicas dentro do bloco de tecnologias */
+    #techs .progress-bar {
+      width: 0;                    /* começa zerado */
+      transition: width 1.2s ease; /* anima ao preencher */
+    }
   </style>
 </head>
 
@@ -141,6 +145,36 @@
               <h5>2016 - 2020</h5>
               <p><em>Centro Universitário UNA Betim, MG</em></p>
             </div>
+
+            <!-- Tecnologias (dinâmicas) -->
+            <h3 class="resume-title">Tecnologias</h3>
+            <div class="resume-item">
+              <p>As principais ferramentas e técnicas que tenho experiência e me sinto confortável na utilização em diferentes contextos de negócio.</p>
+
+              <div id="techs" class="skills-content">
+                <div class="progress">
+                  <span class="skill"><span>Power BI</span> <i class="val">80%</i></span>
+                  <div class="progress-bar-wrap">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+
+                <div class="progress">
+                  <span class="skill"><span>Programação Python</span> <i class="val">70%</i></span>
+                  <div class="progress-bar-wrap">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+
+                <div class="progress">
+                  <span class="skill"><span>Programação SQL</span> <i class="val">70%</i></span>
+                  <div class="progress-bar-wrap">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Tecnologias -->
           </div>
           <!-- /Coluna Esquerda -->
 
@@ -202,42 +236,6 @@
       </div>
     </section>
     <!-- /Resume Section -->
-
-    <!-- Skills Section (Tecnologias dinâmicas) -->
-    <section id="skills" class="skills section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Tecnologias</h2>
-        <p>As principais ferramentas e técnicas que tenho experiência e me sinto confortável na utilização em diferentes contextos de negócio.</p>
-      </div>
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <h5 class="text-center text-lg-start mb-4">Linguagens e Ferramentas</h5>
-
-        <div class="skills-content">
-          <div class="progress">
-            <span class="skill"><span>Power BI</span> <i class="val">80%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-          <div class="progress">
-            <span class="skill"><span>Programação Python</span> <i class="val">70%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-          <div class="progress">
-            <span class="skill"><span>Programação SQL</span> <i class="val">70%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- /Skills Section -->
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio section">
@@ -349,14 +347,14 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-  <!-- Animação das barras (garantia mesmo que o main.js do template não trate) -->
+  <!-- Animação das barras de #techs -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const section = document.querySelector('#skills');
-      const bars = document.querySelectorAll('#skills .progress-bar');
-      if (!section || bars.length === 0) return;
+      const container = document.querySelector('#techs');
+      if (!container) return;
+      const bars = container.querySelectorAll('.progress-bar');
 
-      const animate = () => {
+      const fill = () => {
         bars.forEach(bar => {
           const val = bar.getAttribute('aria-valuenow') || '0';
           bar.style.width = val + '%';
@@ -364,17 +362,17 @@
       };
 
       if ('IntersectionObserver' in window) {
-        const obs = new IntersectionObserver((entries) => {
+        const obs = new IntersectionObserver(entries => {
           entries.forEach(e => {
             if (e.isIntersecting) {
-              animate();
+              fill();
               obs.disconnect();
             }
           });
         }, { threshold: 0.25 });
-        obs.observe(section);
+        obs.observe(container);
       } else {
-        animate();
+        fill();
       }
     });
   </script>
