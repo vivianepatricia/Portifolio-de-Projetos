@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="utf-8">
@@ -15,7 +15,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -27,13 +27,10 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: DevFolio
-  * Template URL: https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/
-  * Updated: Jun 29 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <!-- Ajuste de âncora para não ficar sob o header -->
+  <style>
+    #resume { scroll-margin-top: 90px; }
+  </style>
 </head>
 
 <body class="index-page">
@@ -42,17 +39,16 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1 class="sitename">Portfolio</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="active">Inicio<br></a></li>
+          <li><a href="#hero" class="active">Início</a></li>
           <li><a href="#about">Sobre Mim</a></li>
-          <li><a href="#Curriculo">Currículo</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
+          <!-- Link do menu levando ao tópico Currículo -->
+          <li><a href="#resume" class="scrollto">Currículo</a></li>
+          <li><a href="#portfolio">Portfólio</a></li>
           <li><a href="#about">Contato</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -64,15 +60,13 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
-
       <img src="assets/img/hero-img.png" alt="" data-aos="fade-in">
-
       <div class="container d-flex flex-column align-items-center justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
         <h2>Viviane Oliveira</h2>
         <p><span class="typed" data-typed-items="Analista de Dados"></span></p>
       </div>
-    
-    </section><!-- /Hero Section -->
+    </section>
+    <!-- /Hero Section -->
 
     <!-- About Section -->
     <section id="about" class="about section">
@@ -88,7 +82,7 @@
               </p>
               <p>
                 Levo a visão de processo e o senso de urgência que desenvolvi em operações, suporte técnico e logística para resolver problemas de negócio com dados e IA. 
-                Hoje cursando Pós graduação em Data Analytics e IA Aplicada a Negócios.
+                Hoje cursando Pós-graduação em Data Analytics e IA Aplicada a Negócios.
               </p>
             </div>
           </div>
@@ -96,106 +90,86 @@
           <div class="col-md-6">
             <div class="row justify-content-between gy-4">
               <div class="col-lg-7 about-info">
-
-              <div class="about-me">
-              <h4>Contatos</h4>
-                <p><strong>Name: </strong> <span>Viviane Oliveira</span></p>
-                <p><strong>Título: </strong> <span>Analista de Dados</span></p>
-                <p><strong>Email: </strong> <span>vivianepatricia15@gmail.com</span></p>
-                <p><strong>Telefone: </strong> <span>(31) 99571-6083</span></p>
-                <p><strong>LinkedIn: </strong> <span><a href="https://www.linkedin.com/in/viviane-oliveira-150226135/"><i class="bi bi-linkedin"></i></a></span></p>
-              </div>
-              </div>
+                <div class="about-me">
+                  <h4>Contatos</h4>
+                  <p><strong>Nome: </strong> <span>Viviane Oliveira</span></p>
+                  <p><strong>Título: </strong> <span>Analista de Dados</span></p>
+                  <p><strong>Email: </strong> <span>vivianepatricia15@gmail.com</span></p>
+                  <p><strong>Telefone: </strong> <span>(31) 99571-6083</span></p>
+                  <p><strong>LinkedIn: </strong> <span><a href="https://www.linkedin.com/in/viviane-oliveira-150226135/"><i class="bi bi-linkedin"></i></a></span></p>
+                </div>
               </div>
             </div>
           </div>
 
-          
-
-
-
         </div>
-
       </div>
-
-    </section><!-- /About Section -->
+    </section>
+    <!-- /About Section -->
 
     <!-- Resume Section -->
     <section id="resume" class="resume section">
 
-      <!-- Section Title -->
+      <!-- Section Title (centralizado) -->
       <div class="container section-title" data-aos="fade-up">
-        <div class="Currículo">
-        <h2>Curriculo</h2>
+        <h2>Currículo</h2>
         <p>Experiências e principais resultados gerados na minha carreira.</p>
-      </div><!-- End Section Title -->
+      </div>
+      <!-- /Section Title -->
 
       <div class="container">
-
         <div class="row">
 
+          <!-- Coluna Esquerda (tópicos alinhados à esquerda) -->
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
             <h3 class="resume-title">Objetivo</h3>
-
             <div class="resume-item pb-0">
               <h4>Viviane Oliveira</h4>
               <p>
-                <em>
-                  Busco oportunidades como analista de Dados onde eu procuro reduzir retrabalho, 
-                  acelerar análises e dar visibilidade a indicadores de operação e qualidade.
-                </em>
+                <em>Busco oportunidades como Analista de Dados para reduzir retrabalho, acelerar análises e dar visibilidade a indicadores de operação e qualidade.</em>
               </p>
-            </div><!-- Edn Resume Item -->
+            </div>
 
             <h3 class="resume-title">Formação</h3>
             <div class="resume-item">
-              <h4>Pós Graduação em Data Analytics e IA Aplicada a Negócios</h4>
+              <h4>Pós-graduação em Data Analytics e IA Aplicada a Negócios</h4>
               <h5>2025 - 2026</h5>
-              <p><em>Faculdade Singular Futurua FNAT, Online (Cursando)</em></p>
-            </div><!-- Edn Resume Item -->
-            
+              <p><em>Faculdade Singular Futura FNAT, Online (Cursando)</em></p>
+            </div>
             <div class="resume-item">
-             <h4>Engenharia Civil</h4>
+              <h4>Engenharia Civil</h4>
               <h5>2016 - 2020</h5>
-              <p><em>Centro Universitario UNA Betim, MG</em></p>
-            </div><!-- Edn Resume Item -->
-
-            <h3 class="resume-title">Tecnologias</h3>
-
-            <p>As principais ferramentas e técnicas que tenho experiência e me sinto confortável na utilização em diferentes contextos de negócio.</p>
-
-            <section id="about" class="about section">
-              <div class="container" data-aos="fade-up" data-aos-delay="100">
-              <div class="row gy-4">
-                  <div class="skills-content skills-animation">
-
-                    <h5>Linguagens de Programação</h5>
-
-                    <div class="progress">
-                      <span class="skill"><span>Programção Python</span> <i class="val">70%</i></span>
-                      <div class="progress-bar-wrap">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div><!-- End Skills Item -->
-
-                    <div class="progress">
-                      <span class="skill"><span>Programção SQL</span> <i class="val">70%</i></span>
-                      <div class="progress-bar-wrap">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div><!-- End Skills Item -->
-
-                  </div>
-              </div>
+              <p><em>Centro Universitário UNA Betim, MG</em></p>
             </div>
 
-            </section><!-- /About Section -->
+            <h3 class="resume-title">Tecnologias</h3>
+            <div class="resume-item">
+              <p>Principais ferramentas e técnicas com as quais atuo:</p>
 
+              <div class="skills-content skills-animation">
+                <div class="progress">
+                  <span class="skill"><span>Programação Python</span> <i class="val">70%</i></span>
+                  <div class="progress-bar-wrap">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
 
+                <div class="progress">
+                  <span class="skill"><span>Programação SQL</span> <i class="val">70%</i></span>
+                  <div class="progress-bar-wrap">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
+          <!-- /Coluna Esquerda -->
 
+          <!-- Coluna Direita -->
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
             <h3 class="resume-title">Experiência</h3>
+
             <div class="resume-item">
               <h4>Analista</h4>
               <h5>Ago/2024 - Atual</h5>
@@ -203,41 +177,37 @@
               <ul>
                 <li>Análise e detecção de incidentes em veículos zero km.</li>
               </ul>
-              <p>
-            </div><!-- Edn Resume Item -->
+            </div>
 
             <div class="resume-item">
               <h4>Assistente Administrativo</h4>
               <h5>Ago/2022 - Ago/2024</h5>
               <p><em>Spectrum Equipamentos (Minipa)</em></p>
               <ul>
-                <li>Atendimento a clientes e rede de autorizadas.</li> 
-                <li>Criação de um projeto para classificar Leads e priorizar a comunicação dos times de marketing e comercial.</li> 
-                <li>Suporte técnico e manutenção de equipamentos.</li> 
+                <li>Atendimento a clientes e rede de autorizadas.</li>
+                <li>Projeto para classificar Leads e priorizar a comunicação dos times de marketing e comercial.</li>
+                <li>Suporte técnico e manutenção de equipamentos.</li>
               </ul>
-              </p>
-            </div><!-- Edn Resume Item -->
+            </div>
 
             <div class="resume-item">
               <h4>Estagiária em Engenharia de Embalagem</h4>
               <h5>Nov/2019 - Nov/2020</h5>
               <p><em>Ceva Logistics</em></p>
               <ul>
-                <li>Elaboração de documentação técnica e análise de KPIs.</li> 
+                <li>Elaboração de documentação técnica e análise de KPIs.</li>
                 <li>Implementação de Lean Manufacturing.</li>
               </ul>
-              </p>
-            </div><!-- Edn Resume Item -->
+            </div>
 
-          <div class="resume-item">
+            <div class="resume-item">
               <h4>Auxiliar de Arquivo</h4>
               <h5>Mar/2018 - Jun/2019</h5>
               <p><em>Iron Mountain</em></p>
               <ul>
                 <li>Digitalização e organização de documentos.</li>
               </ul>
-              </p>
-            </div><!-- Edn Resume Item -->
+            </div>
 
             <div class="resume-item">
               <h4>Stola do Brasil</h4>
@@ -246,28 +216,23 @@
               <ul>
                 <li>Parametrização de processos de solda.</li>
               </ul>
-              </p>
-            </div><!-- Edn Resume Item -->
-            
+            </div>
           </div>
+          <!-- /Coluna Direita -->
 
         </div>
-
       </div>
-
-    </section><!-- /Resume Section -->
+    </section>
+    <!-- /Resume Section -->
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio section">
-
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Portfolio de Projetos</h2>
         <p>Demonstração de soluções de problemas de negócio com as ferramentas e técnicas que domino</p>
-      </div><!-- End Section Title -->
+      </div>
 
       <div class="container">
-
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
@@ -276,19 +241,19 @@
             <li data-filter=".filter-product">Automação</li>
             <li data-filter=".filter-branding">Inteligência Artificial</li>
             <li data-filter=".filter-books"></li>
-          </ul><!-- End Portfolio Filters -->
+          </ul>
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
               <img src="assets/img/portfolio/app-1.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>Análise de Dados dos Entregas dos Produtos da Amazon</h4>
-                <p>O objetivo dessa análise é descobrir as possível causas de atraso nas entregas dos produtos da Amazon que estão prejudicando a experiência dos clientes.</p>
-                <a href="assets/img/portfolio/app-1.jpg" title="Análise de Dados dos Entregas dos Produtos da Amazon" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <h4>Análise de Dados das Entregas da Amazon</h4>
+                <p>Descobrir possíveis causas de atraso nas entregas que prejudicam a experiência dos clientes.</p>
+                <a href="assets/img/portfolio/app-1.jpg" title="Análise de Dados das Entregas da Amazon" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="https://github.com/vivianepatricia/Analise-de-entrega-de-produtos-da-Amazon" title="Mais Detalhes" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div>
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
               <img src="assets/img/portfolio/app-1.jpg" class="img-fluid" alt="">
@@ -298,7 +263,7 @@
                 <a href="assets/img/portfolio/app-1.jpg" title="Product 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div>
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
               <img src="assets/img/portfolio/app-1.jpg" class="img-fluid" alt="">
@@ -308,7 +273,7 @@
                 <a href="assets/img/portfolio/app-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div>
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
               <img src="assets/img/portfolio/app-1.jpg" class="img-fluid" alt="">
@@ -318,7 +283,7 @@
                 <a href="assets/img/portfolio/app-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div>
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
               <img src="assets/img/portfolio/app-1.jpg" class="img-fluid" alt="">
@@ -328,19 +293,17 @@
                 <a href="assets/img/portfolio/app-1.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div>
 
-          </div><!-- End Portfolio Container -->
+          </div>
         </div>
       </div>
-
-    </section><!-- /Portfolio Section -->
-
+    </section>
+    <!-- /Portfolio Section -->
 
   </main>
 
   <footer id="footer" class="footer accent-background">
-
     <div class="container">
       <div class="copyright text-center ">
         <p>© <span>Copyright</span> <strong class="px-1 sitename">DevFolio</strong> <span>All Rights Reserved</span></p>
@@ -349,14 +312,9 @@
         <a href="https://www.linkedin.com/in/viviane-oliveira-150226135/"><i class="bi bi-linkedin"></i></a>
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-
   </footer>
 
   <!-- Scroll Top -->
@@ -381,5 +339,4 @@
   <script src="assets/js/main.js"></script>
 
 </body>
-
 </html>
