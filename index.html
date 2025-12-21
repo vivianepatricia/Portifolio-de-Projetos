@@ -32,7 +32,7 @@
     /* Evita o header cobrir a âncora ao rolar */
     #resume { scroll-margin-top: 90px; }
 
-    /* Barras do bloco Tecnologias começam em 0 e animam quando preenchidas via JS */
+    /* Barras do bloco Tecnologias: começam em 0 e têm transição suave */
     #techs .progress-bar {
       width: 0;
       transition: width .9s ease;
@@ -117,12 +117,11 @@
     <!-- Resume Section -->
     <section id="resume" class="resume section">
 
-      <!-- Section Title (centralizado) -->
+      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Currículo</h2>
         <p>Experiências e principais resultados gerados na minha carreira.</p>
       </div>
-      <!-- /Section Title -->
 
       <div class="container">
         <div class="row">
@@ -147,7 +146,7 @@
               <p><em>Centro Universitário UNA Betim, MG</em></p>
             </div>
 
-            <!-- Tecnologias (dinâmicas no lugar original) -->
+            <!-- Tecnologias -->
             <h3 class="resume-title">Tecnologias</h3>
             <div class="resume-item">
               <p>As principais ferramentas e técnicas que tenho experiência e me sinto confortável na utilização em diferentes contextos de negócio.</p>
@@ -348,33 +347,39 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-  <!-- Animação das barras de #techs -->
+  <!-- Animação das barras de #techs (scroll-based, sem dependências do template) -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const container = document.querySelector('#techs');
-      if (!container) return;
-      const bars = container.querySelectorAll('.progress-bar');
+    document.addEventListener('DOMContentLoaded', () => {
+      const techs = document.getElementById('techs');
+      if (!techs) return;
 
-      const fill = () => {
-        bars.forEach(bar => {
-          const val = bar.getAttribute('aria-valuenow') || '0';
-          bar.style.width = val + '%';
-        });
+      const bars = techs.querySelectorAll('.progress-bar');
+
+      // Garante início em 0%
+      bars.forEach(b => b.style.width = '0%');
+
+      const animateIfInView = () => {
+        const r = techs.getBoundingClientRect();
+        const inView = r.top < window.innerHeight * 0.8 && r.bottom > 0;
+        if (inView) {
+          bars.forEach(b => {
+            const val = b.getAttribute('aria-valuenow') || '0';
+            b.style.width = val + '%';
+          });
+          window.removeEventListener('scroll', onScroll);
+          window.removeEventListener('resize', onScroll);
+          window.removeEventListener('load', onScroll);
+        }
       };
 
-      if ('IntersectionObserver' in window) {
-        const obs = new IntersectionObserver(entries => {
-          entries.forEach(e => {
-            if (e.isIntersecting) {
-              fill();
-              obs.disconnect();
-            }
-          });
-        }, { threshold: 0.25 });
-        obs.observe(container);
-      } else {
-        fill();
-      }
+      const onScroll = () => requestAnimationFrame(animateIfInView);
+
+      window.addEventListener('scroll', onScroll);
+      window.addEventListener('resize', onScroll);
+      window.addEventListener('load', onScroll);
+
+      // Checa já no carregamento (caso a seção esteja visível)
+      animateIfInView();
     });
   </script>
 
