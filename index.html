@@ -32,11 +32,12 @@
     /* Evita o header cobrir a âncora ao rolar */
     #resume { scroll-margin-top: 90px; }
 
-    /* Barras do bloco Tecnologias: começam em 0 e têm transição suave */
+    /* Mantém o comportamento do template: barra começa em 0 e anima */
+    /* O template já estiliza .skills .progress-bar; reforçamos a cor com fallback */
     #techs .progress-bar {
-      width: 0;
-      transition: width .9s ease;
       background: var(--accent-color, #0d6efd);
+      transition: width .9s ease;
+      width: 0; /* início em 0 para a animação */
     }
   </style>
 </head>
@@ -117,7 +118,6 @@
     <!-- Resume Section -->
     <section id="resume" class="resume section">
 
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Currículo</h2>
         <p>Experiências e principais resultados gerados na minha carreira.</p>
@@ -146,11 +146,12 @@
               <p><em>Centro Universitário UNA Betim, MG</em></p>
             </div>
 
-            <!-- Tecnologias -->
+            <!-- Tecnologias (estrutura original do template + gatilho Waypoints) -->
             <h3 class="resume-title">Tecnologias</h3>
             <div class="resume-item">
               <p>As principais ferramentas e técnicas que tenho experiência e me sinto confortável na utilização em diferentes contextos de negócio.</p>
 
+              <!-- IMPORTANTE: manter as classes skills e skills-content -->
               <div id="techs" class="skills skills-content">
                 <div class="progress">
                   <span class="skill"><span>Power BI</span> <i class="val">80%</i></span>
@@ -347,40 +348,23 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-  <!-- Animação das barras de #techs (scroll-based, sem dependências do template) -->
+  <!-- Gatilho original (Waypoints) apenas para o bloco #techs -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const techs = document.getElementById('techs');
-      if (!techs) return;
+    (function () {
+      const techs = document.querySelector('#techs');
+      if (!techs || typeof Waypoint === 'undefined') return;
 
-      const bars = techs.querySelectorAll('.progress-bar');
-
-      // Garante início em 0%
-      bars.forEach(b => b.style.width = '0%');
-
-      const animateIfInView = () => {
-        const r = techs.getBoundingClientRect();
-        const inView = r.top < window.innerHeight * 0.8 && r.bottom > 0;
-        if (inView) {
-          bars.forEach(b => {
-            const val = b.getAttribute('aria-valuenow') || '0';
-            b.style.width = val + '%';
+      new Waypoint({
+        element: techs,
+        offset: '80%',
+        handler: function () {
+          techs.querySelectorAll('.progress .progress-bar').forEach(function (el) {
+            el.style.width = (el.getAttribute('aria-valuenow') || '0') + '%';
           });
-          window.removeEventListener('scroll', onScroll);
-          window.removeEventListener('resize', onScroll);
-          window.removeEventListener('load', onScroll);
+          this.destroy();
         }
-      };
-
-      const onScroll = () => requestAnimationFrame(animateIfInView);
-
-      window.addEventListener('scroll', onScroll);
-      window.addEventListener('resize', onScroll);
-      window.addEventListener('load', onScroll);
-
-      // Checa já no carregamento (caso a seção esteja visível)
-      animateIfInView();
-    });
+      });
+    })();
   </script>
 
   <!-- Main JS File -->
